@@ -1,6 +1,6 @@
 import React from "react";
-import "./MarvelIntro.css"; // Import CSS for animation
-import marvelLogo from "../assets/marvel-logo.png"; // Marvel logo image
+import "./MarvelIntro.css";
+import marvelLogo from "../assets/marvel-logo.png";
 import comic1 from "../assets/comic1.jpg";
 import comic2 from "../assets/comic2.jpg";
 import comic3 from "../assets/comic3.jpg";

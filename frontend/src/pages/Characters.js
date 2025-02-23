@@ -16,14 +16,12 @@ function Characters() {
       .catch((error) => console.error("Error fetching characters:", error));
   }, []);
 
-  // Filter characters based on search input and filter selection
   const filteredCharacters = characters.filter((char) => {
     if (filter === "all") return char.name.toLowerCase().includes(search.toLowerCase());
     return (filter === "heroes" ? char.alignment === "hero" : char.alignment === "villain") &&
            char.name.toLowerCase().includes(search.toLowerCase());
   });
 
-  // Pagination logic
   const indexOfLastCharacter = currentPage * charactersPerPage;
   const indexOfFirstCharacter = indexOfLastCharacter - charactersPerPage;
   const currentCharacters = filteredCharacters.slice(indexOfFirstCharacter, indexOfLastCharacter);
@@ -33,7 +31,6 @@ function Characters() {
     <div className="page-container">
       <h2 className="highlight-gold">Marvel Characters</h2>
 
-      {/* 🌟 Search Bar */}
       <input
         type="text"
         placeholder="Search for a character..."
@@ -42,7 +39,6 @@ function Characters() {
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      {/* 🌟 Filter Dropdown */}
       <select className="filter-dropdown" onChange={(e) => setFilter(e.target.value)}>
         <option value="all">Show All</option>
         <option value="heroes">Only Heroes</option>
@@ -60,7 +56,6 @@ function Characters() {
         ))}
       </div>
 
-      {/* Pagination */}
       <div className="pagination">
         {Array.from({ length: Math.ceil(filteredCharacters.length / charactersPerPage) }, (_, index) => (
           <button key={index} onClick={() => paginate(index + 1)} className="pagination-btn">

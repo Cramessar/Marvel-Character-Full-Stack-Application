@@ -7,28 +7,22 @@ from flask_marshmallow import Marshmallow
 from flask_cors import CORS
 import urllib.parse
 
-# Initialize Flask app
 app = Flask(__name__)
 
-# Encode MySQL password to handle special characters
 raw_password = "OKMijn098)(*"
 encoded_password = urllib.parse.quote_plus(raw_password)
 
-# MySQL database configuration with encoded password
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://root:{encoded_password}@localhost/marvel"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Set to False for better performance
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Creating our Base Model
 class Base(DeclarativeBase):
     pass
 
-# Initialize SQLAlchemy and Marshmallow
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
 ma = Marshmallow(app)
 CORS(app)
 
-# ✅ Character Model (Basic Version)
 class Character(Base):
     __tablename__ = "characters"
     
@@ -39,27 +33,21 @@ class Character(Base):
     powers: Mapped[str] = mapped_column(Text, nullable=True)
     image_url: Mapped[str] = mapped_column(String(255), nullable=True)
 
-# ✅ Character Schema
 class CharacterSchema(ma.Schema):
     class Meta:
         fields = ("id", "name", "alias", "alignment", "powers", "image_url")
 
-# Initialize Schemas
 character_schema = CharacterSchema()
 characters_schema = CharacterSchema(many=True)
 
-# ✅ Ensure Database Tables Exist
 def create_database():
     root_engine = create_engine(f"mysql+mysqlconnector://root:{encoded_password}@localhost")
     with root_engine.connect() as connection:
         connection.execute(text("CREATE DATABASE IF NOT EXISTS marvel"))
 
-# Run database creation on startup
 with app.app_context():
     create_database()
-    db.create_all()  # Create tables if they don't exist
-
-########### Flask Endpoints ##############
+    db.create_all()
 
 @app.route('/')
 def home():
@@ -67,16 +55,14 @@ def home():
 
 @app.route('/favicon.ico')
 def favicon():
-    return '', 204  # Return an empty response with a "No Content" status
+    return '', 204
 
-# ✅ Fetch All Characters
 @app.route('/characters', methods=['GET'])
 def get_characters():
     query = select(Character)
     characters = db.session.execute(query).scalars().all()
     return characters_schema.jsonify(characters), 200
 
-# ✅ Fetch Single Character by ID
 @app.route('/characters/<int:id>', methods=['GET'])
 def get_character(id):
     character = db.session.get(Character, id)
@@ -84,7 +70,6 @@ def get_character(id):
         return jsonify({"message": "Character not found"}), 404
     return character_schema.jsonify(character), 200
 
-# ✅ Create a New Character
 @app.route('/characters', methods=['POST'])
 def create_character():
     if not request.is_json:
@@ -92,13 +77,11 @@ def create_character():
 
     character_data = request.get_json()
 
-    # Check if character with same name exists
     existing_character = db.session.execute(select(Character).where(Character.name == character_data['name'])).scalar_one_or_none()
     
     if existing_character:
         return jsonify({"error": "Character already exists!"}), 400
 
-    # Create new character if not duplicate
     new_character = Character(
         name=character_data['name'], 
         alias=character_data['alias'], 
@@ -112,8 +95,6 @@ def create_character():
 
     return jsonify({"message": "Character added successfully", "character": character_schema.dump(new_character)}), 201
 
-
-# ✅ Update Character Details
 @app.route('/characters/<int:id>', methods=['PUT'])
 def update_character(id):
     character = db.session.get(Character, id)
@@ -134,7 +115,6 @@ def update_character(id):
     db.session.commit()
     return jsonify({"message": "Character updated successfully", "character": character_schema.dump(character)}), 200
 
-# ✅ Delete Character
 @app.route('/characters/<int:id>', methods=['DELETE'])
 def delete_character(id):
     character = db.session.get(Character, id)
@@ -145,6 +125,5 @@ def delete_character(id):
     db.session.commit()
     return jsonify({"message": "Character successfully deleted"}), 200
 
-# ✅ Run Flask App
 if __name__ == '__main__':
     app.run(debug=True)
