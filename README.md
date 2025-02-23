@@ -119,7 +119,7 @@ git clone https://github.com/Cramessar/Marvel-Character-Full-Stack-Application
 # (Please change the folder name locally; "MarvelAPI" seemed a little too basic for GitHub.)
 cd Marvel-Character-Full-Stack-Application
 # (Feel free to rename this long name to something more concise.)
-
+```
 
 ### 📌 Backend Setup (Flask)
 
@@ -129,7 +129,7 @@ python3 -m venv venv
 source venv/bin/activate  # Windows users: use venv\Scripts\activate
 pip install -r requirements.txt
 python server.py
-
+```
 
 ### 📌 Frontend Setup (React)
 
@@ -137,7 +137,7 @@ python server.py
 cd frontend
 npm install
 npm start
-
+```
 
 ---
 
