@@ -1,4 +1,4 @@
-const content = `# 🚀 Marvel Character Hub - The Ultimate Marvel API Project
+# 🚀 Marvel Character Hub - The Ultimate Marvel API Project
 
 Welcome to the **Marvel Character Hub**, where your favorite superheroes and villains come to life in an ultimate web app! What started as a simple character database evolved into a sleek, feature-packed project. Read on to learn everything we’ve built.
 
