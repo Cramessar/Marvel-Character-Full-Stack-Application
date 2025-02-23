@@ -110,34 +110,6 @@ Welcome to the **Marvel Character Hub**, where your favorite superheroes and vil
 
 ---
 
-## 📂 File Structure
-
-\`\`\`plaintext
-marvel-api-project/
-├── backend/
-│   ├── server.py            # Flask backend with MySQL integration
-│   ├── requirements.txt     # Dependencies for Flask and SQLAlchemy
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── MarvelIntro.js       # Marvel comic-style intro animation
-│   │   │   ├── MarvelIntro.css      # Flip effect styling (tweak as needed)
-│   │   │   └── NavigationBar.js     # Navbar with dynamic tab highlighting
-│   │   ├── pages/
-│   │   │   ├── Home.js              # Homepage with intro & featured characters
-│   │   │   ├── Characters.js        # Character list with search & filters
-│   │   │   ├── CharacterDetails.js  # Individual character profile
-│   │   │   ├── AddCharacter.js      # Form to add new characters
-│   │   │   └── NotFound.js          # Deadpool-themed 404 page
-│   │   ├── styles.css               # Custom styling with hover animations
-│   │   ├── App.js                   # Main app component
-│   │   └── index.js                 # Renders the React app
-│   └── package.json                 # Frontend dependencies
-└── README.md                        # This amazing document
-\`\`\`
-
----
-
 ## 🚀 Installation & Setup
 
 ### 1️⃣ Clone the Repository
