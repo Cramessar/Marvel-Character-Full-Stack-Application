@@ -1,0 +1,406 @@
+/* 🌟 Marvel Red & Blue Background - Fixing Page Break */
+html, body {
+  min-height: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #FF16D1, #592DEA);
+  color: white;
+  background-attachment: fixed;
+}
+
+/* 🌟 Ensures Background is Consistent Across All Content */
+.page-container {
+  min-height: 100%;
+  height: auto;
+  background: linear-gradient(135deg, #FF16D1, #592DEA);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* 🌟 Signature Gold & Blue Highlights */
+.highlight-gold {
+  color: #FFC82C !important; 
+  font-weight: bold !important;
+  text-shadow: 1px 1px 10px rgba(255, 215, 0, 0.5) !important;
+}
+
+.highlight-blue {
+  color: #1FB6FF !important;
+  font-weight: bold !important;
+  text-shadow: 1px 1px 10px rgba(0, 191, 255, 0.5) !important;
+}
+
+/* 🌟 Character Grid */
+.character-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* 🌟 Character Cards */
+.character-card {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  color: white !important;
+  border: 2px solid #ffd700;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.character-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
+}
+
+/* 🌟 Character Name */
+.character-name {
+  color: #1FB6FF !important;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* 🌟 Character Image */
+.character-image {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.character-image:hover {
+  transform: scale(1.1);
+}
+
+/* 🌟 Hero Section */
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* 🌟 Marvel Universe Section */
+.marvel-universe {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 30px auto;
+  width: 80%;
+  max-width: 900px;
+  color: white;
+}
+
+.marvel-universe h2 {
+  color: #FFC82C !important;
+  font-size: 28px;
+  text-shadow: 1px 1px 10px rgba(255, 215, 0, 0.5);
+}
+
+/* 🌟 Stan Lee Section */
+.stan-lee-section {
+  text-align: center;
+  padding: 50px 20px;
+  background: #111;
+  border-radius: 10px;
+  margin: 30px auto;
+  width: 80%;
+  max-width: 900px;
+  color: white;
+}
+
+.stan-lee-section h2 {
+  color: #00bfff !important;
+  font-size: 28px;
+  text-shadow: 1px 1px 10px rgba(0, 191, 255, 0.5);
+}
+
+.stan-lee-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* 🌟 Stan Lee Image */
+.stan-lee-image {
+  max-width: 200px;
+  border-radius: 10px;
+  border: 3px solid #ffd700;
+}
+
+/* 🌟 Stan Lee Bio Text */
+.stan-lee-text {
+  max-width: 600px;
+  text-align: left;
+  font-size: 18px;
+  color: white !important;
+}
+
+/* 🌟 Featured Characters - Centered Fix */
+.featured-characters {
+  text-align: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.character-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* 🌟 Ensuring strong contrast for all sections */
+.stan-lee-text, 
+.marvel-universe p, 
+.stan-lee-section p, 
+.character-card p {
+  color: white !important;
+}
+
+/* 🌟 Fixing Buttons inside Gray Areas */
+.btn-custom {
+  background-color: #e23636;
+  color: white;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: 0.3s;
+  border: 2px solid #ffd700;
+}
+
+.btn-custom:hover {
+  background-color: #a31a1a;
+}
+
+/* 🌟 Marvel Intro Animation */
+.marvel-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: fadeOut 3s ease-in-out forwards;
+}
+
+.comic-flip {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.comic-page {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  animation: flipComics 1.5s linear forwards;
+  position: absolute;
+  opacity: 0;
+}
+
+.comic-page:nth-child(1) { animation-delay: 0s; }
+.comic-page:nth-child(2) { animation-delay: 0.3s; }
+.comic-page:nth-child(3) { animation-delay: 0.6s; }
+.comic-page:nth-child(4) { animation-delay: 0.9s; }
+
+.marvel-logo {
+  width: 40%;
+  max-width: 300px;
+  position: absolute;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out 1.5s forwards;
+}
+
+/* 🌟 Animations */
+@keyframes flipComics {
+  0% { opacity: 0; transform: scale(1.2); }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.8); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
+
+/* 🌟 Responsive Design */
+@media (max-width: 768px) {
+  .stan-lee-content {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .stan-lee-text {
+      text-align: center;
+  }
+
+  .character-grid {
+      flex-direction: column;
+      align-items: center;
+  }
+}
+/* 🌟 Character Detail Page - Gray Box Centering */
+.character-detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* 🌟 Character Detail Box */
+.character-detail {
+  max-width: 600px;
+  background: rgba(0, 0, 0, 0.8); /* Dark gray background */
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8); /* Gold glow effect */
+  color: white;
+}
+
+/* 🌟 Character Image */
+.character-image-large {
+  width: 60%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* 🌟 Section Headers */
+.character-detail h2 {
+  margin-top: 15px;
+  font-size: 24px;
+}
+
+/* 🌟 Section Spacing */
+.character-detail p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+/* 🌟 Search Bar */
+.search-bar {
+  width: 60%;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 2px solid #ffd700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 🌟 Filter Dropdown */
+.filter-dropdown {
+  width: 30%;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 2px solid #ffd700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 🌟 Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-btn {
+  background-color: #e23636;
+  color: white;
+  border: 2px solid #ffd700;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-btn:hover {
+  background-color: #a31a1a;
+}
+
+/* 🌟 Character Detail Container */
+.character-detail {
+  max-width: 900px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto;
+  box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
+  color: white;
+}
+
+/* 🌟 Character Image */
+.character-image-large {
+  width: 60%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* 🌟 Section Headers */
+.character-detail h2 {
+  margin-top: 15px;
+  font-size: 24px;
+}
+
+/* 🌟 Section Spacing */
+.character-detail p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* 🌟 Animated Button */
+.btn-custom {
+  background-color: #e23636;
+  color: white;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+  border: 2px solid #ffd700;
+}
+
+.btn-custom:hover {
+  background-color: #a31a1a;
+  transform: scale(1.05);
+}
+
+/* 🌟 Image Hover Effect */
+.character-image {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.character-image:hover {
+  transform: scale(1.1);
+}
