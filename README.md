@@ -192,3 +192,4 @@ npm start
 - 🎨 **Marvel Comics** – For decades of legendary storytelling.
 - 💻 **Open Source Community** – For making projects like this possible.
 - 🦸 **You** – For the support, even when struggling with MYSQL Workbench for 3 days!`;
+
