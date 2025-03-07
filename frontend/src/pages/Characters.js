@@ -56,7 +56,6 @@ function Characters() {
         ))}
       </div>
 
-/* TODO: to do use  navigate, link on click. */
       <div className="pagination">
         {Array.from({ length: Math.ceil(filteredCharacters.length / charactersPerPage) }, (_, index) => (
           <button key={index} onClick={() => paginate(index + 1)} className="pagination-btn">
