@@ -1,4 +1,4 @@
-const content = `# 🚀 Marvel Character Hub - The Ultimate Marvel API Project
+# 🚀 Marvel Character Hub - The Ultimate Marvel API Project
 
 Welcome to the **Marvel Character Hub**, where your favorite superheroes and villains come to life in an ultimate web app! What started as a simple character database evolved into a sleek, feature-packed project. Read on to learn everything we’ve built.
 
@@ -110,62 +110,34 @@ Welcome to the **Marvel Character Hub**, where your favorite superheroes and vil
 
 ---
 
-## 📂 File Structure
-
-\`\`\`plaintext
-marvel-api-project/
-├── backend/
-│   ├── server.py            # Flask backend with MySQL integration
-│   ├── requirements.txt     # Dependencies for Flask and SQLAlchemy
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── MarvelIntro.js       # Marvel comic-style intro animation
-│   │   │   ├── MarvelIntro.css      # Flip effect styling (tweak as needed)
-│   │   │   └── NavigationBar.js     # Navbar with dynamic tab highlighting
-│   │   ├── pages/
-│   │   │   ├── Home.js              # Homepage with intro & featured characters
-│   │   │   ├── Characters.js        # Character list with search & filters
-│   │   │   ├── CharacterDetails.js  # Individual character profile
-│   │   │   ├── AddCharacter.js      # Form to add new characters
-│   │   │   └── NotFound.js          # Deadpool-themed 404 page
-│   │   ├── styles.css               # Custom styling with hover animations
-│   │   ├── App.js                   # Main app component
-│   │   └── index.js                 # Renders the React app
-│   └── package.json                 # Frontend dependencies
-└── README.md                        # This amazing document
-\`\`\`
-
----
-
 ## 🚀 Installation & Setup
 
 ### 1️⃣ Clone the Repository
 
-\`\`\`bash
+```sh
 git clone https://github.com/Cramessar/Marvel-Character-Full-Stack-Application
 # (Please change the folder name locally; "MarvelAPI" seemed a little too basic for GitHub.)
 cd Marvel-Character-Full-Stack-Application
 # (Feel free to rename this long name to something more concise.)
-\`\`\`
+```
 
 ### 📌 Backend Setup (Flask)
 
-\`\`\`bash
+```sh
 cd backend
 python3 -m venv venv
-source venv/bin/activate  # Windows users: use venv\Scripts\activate
+venv\Scripts\activate
 pip install -r requirements.txt
 python server.py
-\`\`\`
+```
 
 ### 📌 Frontend Setup (React)
 
-\`\`\`bash
+```sh
 cd frontend
 npm install
 npm start
-\`\`\`
+```
 
 ---
 
@@ -178,7 +150,7 @@ npm start
 
 ---
 
-## 💡 Future Enhancements
+## 💡 Future Enhancements (That I dont have time for right now)
 
 - 🔹 OAuth Login (Sign in with Google/GitHub to save custom characters)
 - 🔹 Ability to favorite characters
@@ -193,13 +165,3 @@ npm start
 - 💻 **Open Source Community** – For making projects like this possible.
 - 🦸 **You** – For the support, even when struggling with MYSQL Workbench for 3 days!`;
 
-const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' });
-const url = URL.createObjectURL(blob);
-const a = document.createElement('a');
-a.href = url;
-a.download = 'README.md';
-a.style.display = 'none';
-document.body.appendChild(a);
-a.click();
-document.body.removeChild(a);
-URL.revokeObjectURL(url);
