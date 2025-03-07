@@ -150,7 +150,7 @@ npm start
 
 ---
 
-## 💡 Future Enhancements
+## 💡 Future Enhancements (That I dont have time for right now)
 
 - 🔹 OAuth Login (Sign in with Google/GitHub to save custom characters)
 - 🔹 Ability to favorite characters
