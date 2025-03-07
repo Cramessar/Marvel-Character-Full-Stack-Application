@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from sqlalchemy import String, Text, Integer, select, create_engine, text
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, sessionmaker
 from flask_sqlalchemy import SQLAlchemy
 from marshmallow import ValidationError, fields
 from flask_marshmallow import Marshmallow
@@ -76,7 +76,6 @@ def create_character():
         return jsonify({"error": "Request must be JSON"}), 415
 
     character_data = request.get_json()
-
     existing_character = db.session.execute(select(Character).where(Character.name == character_data['name'])).scalar_one_or_none()
     
     if existing_character:
@@ -97,23 +96,30 @@ def create_character():
 
 @app.route('/characters/<int:id>', methods=['PUT'])
 def update_character(id):
+    print(f"Received PUT request for character ID: {id}")  # Debugging Log
     character = db.session.get(Character, id)
+
     if not character:
-        return jsonify({"message": "Invalid character ID"}), 400
+        print(f"Character with ID {id} not found!")  # Debugging Log
+        return jsonify({"message": "Character not found"}), 404
 
     try:
-        character_data = character_schema.load(request.json)
-    except ValidationError as e:
-        return jsonify(e.messages), 400
+        character_data = request.get_json()
+        print(f"Data received: {character_data}")  # Debugging Log
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
 
-    character.name = character_data['name']
-    character.alias = character_data['alias']
-    character.alignment = character_data['alignment']
+    character.name = character_data.get('name', character.name)
+    character.alias = character_data.get('alias', character.alias)
+    character.alignment = character_data.get('alignment', character.alignment)
     character.powers = character_data.get('powers', character.powers)
     character.image_url = character_data.get('image_url', character.image_url)
 
     db.session.commit()
+    print(f"Character {id} updated successfully!")  # Debugging Log
+
     return jsonify({"message": "Character updated successfully", "character": character_schema.dump(character)}), 200
+
 
 @app.route('/characters/<int:id>', methods=['DELETE'])
 def delete_character(id):

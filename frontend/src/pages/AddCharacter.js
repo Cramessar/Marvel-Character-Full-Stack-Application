@@ -65,4 +65,6 @@ function AddCharacter() {
   );
 }
 
+/* add required fields */
+/* add error messages if 200 or  201 not met */
 export default AddCharacter;
