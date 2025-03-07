@@ -9,7 +9,7 @@ import urllib.parse
 
 app = Flask(__name__)
 
-raw_password = "OKMijn098)(*"
+raw_password = "replace with your MySQL root password"
 encoded_password = urllib.parse.quote_plus(raw_password)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://root:{encoded_password}@localhost/marvel"
